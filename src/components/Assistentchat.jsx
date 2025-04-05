@@ -30,7 +30,7 @@ function Assistentchat({ book, onClose }) {
         language: book.language
       });
 
-      const response = await axios.post('http://localhost:5000/book-assistant/book-assistant', {
+      const response = await axios.post('https://book-recomm-backend.onrender.com/book-assistant/book-assistant', {
         title: book.title,
         author: book.author,
         genre: book.genre,

@@ -53,7 +53,7 @@ function Bookpreference({ userId, onPreferencesSaved }) {
 
       console.log('Sending data:', requestData);
 
-      const response = await axios.post('http://localhost:5000/recommendations/preferences', requestData, {
+      const response = await axios.post('https://book-recomm-backend.onrender.com/recommendations/preferences', requestData, {
         headers: {
           'Content-Type': 'application/json'
         }

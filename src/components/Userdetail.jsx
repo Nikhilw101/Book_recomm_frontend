@@ -10,7 +10,7 @@ const Userdetail = ({ userId }) => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/recommendations/user/${userId}`);
+        const response = await axios.get(`https://book-recomm-backend.onrender.com/recommendations/user/${userId}`);
         setUserDetails(response.data);
       } catch (error) {
         toast.error('Failed to fetch user details');

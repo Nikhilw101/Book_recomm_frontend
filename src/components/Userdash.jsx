@@ -66,7 +66,7 @@ const Userdash = () => {
 
   const fetchUserName = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/users/${id}`);
+      const response = await axios.get(`https://book-recomm-backend.onrender.com/api/users/${id}`);
       setUserName(response.data.name || 'User');
     } catch (error) {
       console.error('Error fetching user name:', error);

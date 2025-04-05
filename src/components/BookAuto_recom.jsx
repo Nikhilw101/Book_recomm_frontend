@@ -14,7 +14,7 @@ const BookAuto_recom = ({ userId, onPreviewBook }) => {
   const fetchAutoRecommendations = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/recommendations/auto-recommend?user_id=${userId}`);
+      const response = await axios.get(`https://book-recomm-backend.onrender.com/recommendations/auto-recommend?user_id=${userId}`);
       setRecommendations(response.data.recommendations);
       setPreferences(response.data.metadata);
       toast.success('Recommendations updated successfully');
