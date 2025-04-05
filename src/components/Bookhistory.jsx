@@ -19,7 +19,7 @@ function Bookhistory({ userId, onPreviewBook }) {
   const fetchUserHistory = async (userId) => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://book-recomm-backend.onrender.com/recommendations/history?user_id=${userId}`);
+      const response = await axios.get(`https://book-recomm-backend-1.onrender.com/recommendations/history?user_id=${userId}`);
       if (response.data && response.data.history) {
         setHistory(response.data.history);
       }
@@ -36,7 +36,7 @@ function Bookhistory({ userId, onPreviewBook }) {
     
     if (isConfirmed) {
       try {
-        await axios.delete(`https://book-recomm-backend.onrender.com/recommendations/history/${bookId}?user_id=${userId}`);
+        await axios.delete(`https://book-recomm-backend-1.onrender.com/recommendations/history/${bookId}?user_id=${userId}`);
         setHistory(history.filter(book => book.id !== bookId));
         toast.success('Book removed from history');
       } catch (error) {

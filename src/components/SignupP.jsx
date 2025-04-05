@@ -76,7 +76,7 @@ function SignupP() {
 
     try {
       setLoading(true);
-      const response = await axios.post('https://book-recomm-backend.onrender.com/auth/register', {
+      const response = await axios.post('https://book-recomm-backend-1.onrender.com/auth/register', {
         username: formData.username,
         email: formData.email,
         password: formData.password,

@@ -25,7 +25,7 @@ function LoginP() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post('https://book-recomm-backend.onrender.com/auth/login', formData);
+      const response = await axios.post('https://book-recomm-backend-1.onrender.com/auth/login', formData);
       
       // Store user_id in localStorage
       localStorage.setItem('user_id', response.data.user_id);
