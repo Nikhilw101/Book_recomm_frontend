@@ -1,0 +1,695 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Navigation Bar */
+.dashboard-header {
+  background-color: var(--secondary-bg) !important;
+  box-shadow: 0 2px 4px var(--shadow-color) !important;
+  z-index: 1400 !important;
+}
+
+.dashboard-title {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  margin-left: 1rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-button {
+  color: var(--text-primary) !important;
+  padding: 8px !important;
+}
+
+.user-avatar {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 1rem !important;
+}
+
+.user-name {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+  margin-left: 8px !important;
+}
+
+/* Vertical Navigation Drawer */
+.dashboard-drawer {
+  width: 280px !important;
+  flex-shrink: 0;
+}
+
+.dashboard-drawer .MuiDrawer-paper {
+  width: 280px;
+  background-color: var(--secondary-bg);
+  border-right: 1px solid var(--border-color);
+  color: var(--text-primary);
+  z-index: 1300 !important;
+}
+
+.dashboard-drawer .MuiListItem-root {
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dashboard-drawer .MuiListItem-root:hover {
+  background-color: var(--hover-bg);
+}
+
+.dashboard-drawer .MuiListItemIcon-root {
+  color: var(--text-secondary);
+  min-width: 40px;
+}
+
+.dashboard-drawer .MuiListItemText-primary {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.active-menu-item {
+  background-color: var(--accent-color) !important;
+}
+
+.active-menu-item .MuiListItemIcon-root,
+.active-menu-item .MuiListItemText-primary {
+  color: white !important;
+}
+
+/* Main Content Area */
+.dashboard-content {
+  flex-grow: 1;
+  padding: 2rem;
+  transition: margin 0.3s ease;
+}
+
+.content-with-drawer {
+  margin-left: 280px;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+/* Simple Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border-color);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Book Grid Styles */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.book-card {
+  display: flex;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.book-thumbnail {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+}
+
+.book-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-thumbnail img {
+  transform: scale(1.05);
+}
+
+.book-info {
+  flex: 1;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-info h3 {
+  margin: 0 0 0.8rem 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.book-card:hover .book-info h3 {
+  color: var(--accent-color);
+}
+
+.book-info p {
+  margin: 0.3rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.book-info .author {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.book-info .genre {
+  color: var(--accent-color);
+}
+
+/* Button Styles */
+.preview-button,
+.download-button,
+.assistant-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.preview-button:hover {
+  background-color: #3d8b40;
+  transform: translateY(-2px);
+}
+
+.download-button {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.download-button:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.assistant-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.assistant-button:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-modal {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.preview-modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-modal-header h3 {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--text-primary);
+}
+
+.preview-modal-content {
+  padding: 1.5rem;
+}
+
+.preview-book-info {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.preview-book-thumbnail {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.preview-book-details {
+  flex: 1;
+}
+
+.preview-book-details p {
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.preview-book-details strong {
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.preview-description {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.preview-description h4 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.preview-description p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 620px) {
+  .dashboard-drawer {
+    width: 240px !important;
+  }
+
+  .dashboard-drawer .MuiDrawer-paper {
+    width: 240px;
+  }
+
+  .dashboard-content {
+    margin-left: 0 !important;
+    padding: 0.5rem;
+  }
+
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .dashboard-header .MuiToolbar-root {
+    min-height: 56px;
+    padding: 0 8px;
+  }
+
+  .menu-button {
+    margin-right: 8px;
+    padding: 12px !important;
+    z-index: 1500 !important;
+    position: relative;
+  }
+
+  /* Ensure drawer appears above other content on mobile */
+  .MuiDrawer-root {
+    z-index: 1300 !important;
+  }
+
+  .MuiDrawer-modal {
+    z-index: 1300 !important;
+  }
+
+  /* Fix for toggle button not being clickable */
+  .dashboard-header .MuiIconButton-root {
+    z-index: 1500 !important;
+    position: relative;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-card {
+    flex-direction: column;
+  }
+
+  .book-thumbnail {
+    width: 100%;
+    height: 250px;
+  }
+
+  .preview-modal {
+    width: 95%;
+    margin: 10px;
+  }
+
+  .preview-book-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .preview-book-thumbnail {
+    width: 150px;
+    height: 225px;
+  }
+
+  .preview-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .book-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .book-actions button {
+    width: 100%;
+  }
+}
+
+/* No Recommendations Message */
+.no-recommendations {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Recommendations Section */
+.recommendations-section {
+  background: var(--primary-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.recommendations-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.recommendations-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.recommendation-card {
+  display: flex;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+}
+
+.recommendation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.book-thumbnail {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+}
+
+.book-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover .book-thumbnail img {
+  transform: scale(1.05);
+}
+
+.book-info {
+  flex: 1;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-info h3 {
+  margin: 0 0 0.8rem 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.recommendation-card:hover .book-info h3 {
+  color: var(--accent-color);
+}
+
+.book-info p {
+  margin: 0.3rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.book-info .author {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.book-info .genre {
+  color: var(--accent-color);
+}
+
+.book-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.preview-button,
+.download-button,
+.assistant-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.preview-button:hover {
+  background-color: #3d8b40;
+  transform: translateY(-2px);
+}
+
+.download-button {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.download-button:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.assistant-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.assistant-button:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+.no-recommendations {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-card {
+    flex-direction: column;
+  }
+
+  .book-thumbnail {
+    width: 100%;
+    height: 250px;
+  }
+
+  .book-actions {
+    flex-direction: column;
+  }
+
+  .book-actions button,
+  .book-actions a {
+    width: 100%;
+  }
+}

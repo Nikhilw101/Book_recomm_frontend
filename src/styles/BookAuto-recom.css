@@ -1,0 +1,354 @@
+:root {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --card-bg: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #4a90e2;
+  --success-color: #4caf50;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --border-color: #404040;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --hover-bg: #3a3a3a;
+}
+
+.auto-recommendations-section {
+  background: var(--primary-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.preferences-summary {
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.preferences-summary h3 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.preferences-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.preferences-group {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.preferences-group h4 {
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.preferences-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.preferences-group li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.recommendation-card {
+  display: flex;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+}
+
+.recommendation-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+.book-thumbnail {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.book-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
+}
+
+.book-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover .book-thumbnail img {
+  transform: scale(1.05);
+}
+
+.book-info {
+  flex: 1;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-info h3 {
+  margin: 0 0 0.8rem 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.recommendation-card:hover .book-info h3 {
+  color: var(--accent-color);
+}
+
+.book-info p {
+  margin: 0.3rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.book-info strong {
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.book-info .author {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.book-info .genre {
+  color: var(--accent-color);
+}
+
+.book-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+}
+
+.preview-button,
+.download-button,
+.assistant-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 20;
+}
+
+.preview-button {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.preview-button:hover {
+  background-color: #3d8b40;
+  transform: translateY(-2px);
+}
+
+.download-button {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.download-button:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.assistant-button {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.assistant-button:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+/* Simple Loader */
+.loader {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: block;
+  margin: 2rem auto;
+  position: relative;
+  background: var(--accent-color);
+  box-shadow: -24px 0 var(--accent-color), 24px 0 var(--accent-color);
+  animation: dots 2s infinite linear;
+}
+
+@keyframes dots {
+  0% { background: var(--accent-color); }
+  20% { background: var(--accent-color); }
+  40% { background: var(--border-color); }
+  60% { background: var(--border-color); }
+  80% { background: var(--border-color); }
+  100% { background: var(--accent-color); }
+}
+
+/* Remove old loading spinner styles */
+.loading-spinner {
+  display: none;
+}
+
+.no-recommendations {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .auto-recommendations-section {
+    padding: 1rem;
+  }
+
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-card {
+    flex-direction: column;
+  }
+
+  .book-thumbnail {
+    width: 100%;
+    height: 250px;
+  }
+
+  .book-actions {
+    flex-direction: column;
+  }
+
+  .book-actions button,
+  .book-actions a {
+    width: 100%;
+  }
+}
+
+/* Dark theme scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-bg);
+}
+
+/* Card hover effects */
+.recommendation-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(74, 144, 226, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.recommendation-card:hover::before {
+  opacity: 1;
+}
