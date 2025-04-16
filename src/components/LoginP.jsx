@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import BackToHome from './BackToHome';
@@ -89,7 +89,7 @@ function LoginP() {
         </form>
 
         <div className="auth-footer">
-          <p>Don't have an account? <a href="/SignupP">Sign up here</a></p>
+          <p>Don't have an account? <Link to="/SignupP" >Sign up here</Link></p>
         </div>
       </div>
     </div>
