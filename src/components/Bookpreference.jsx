@@ -91,11 +91,14 @@ function Bookpreference({ userId, onPreferencesSaved }) {
       {loading && (
         <div className="loading-overlay">
           <div className="loading-spinner">
-            Saving preferences...
+            
           </div>
         </div>
       )}
       <h2>Book Preferences</h2>
+       <div className="info-message">
+        <p>💡 You can search for books by just entering the book name. Other fields are optional and help refine your search.</p>
+      </div>
       {preferenceId && (
         <div className="preference-id">
           Preference ID: {preferenceId}
