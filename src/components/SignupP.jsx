@@ -76,7 +76,8 @@ function SignupP() {
 
     try {
       setLoading(true);
-      const response = await axios.post('https://book-recomm-backend-1.onrender.com/auth/register', {
+      setErrors({});
+      const response = await axios.post('http://localhost:5000/auth/register', {
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -86,10 +87,17 @@ function SignupP() {
       // Store user_id in localStorage
       localStorage.setItem('user_id', response.data.user_id);
       
-      toast.success('Registration successful!');
+      toast.success('Registration successful! Please login to continue.');
       navigate('/LoginP');
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Registration failed');
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else if (error.response?.status === 400) {
+        setErrors({ submit: 'Please check your input and try again.' });
+      } else {
+        setErrors({ submit: 'Registration failed. Please try again later.' });
+      }
+      toast.error('Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -170,6 +178,8 @@ function SignupP() {
             />
             {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
           </div>
+
+          {errors.submit && <div className="error-message">{errors.submit}</div>}
 
           <button type="submit" className="auth-button" disabled={loading}>
             {loading ? 'Creating Account...' : 'Sign Up'}
