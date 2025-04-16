@@ -84,7 +84,7 @@ function Bookhistory({ userId, onPreviewBook }) {
 
   return (
     <div className="history-section">
-      <h2>Recommendation History</h2>
+      <h2>Books History</h2>
       {loading ? (
         <div className="loader"></div>
       ) : history.length > 0 ? (
