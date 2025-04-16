@@ -89,7 +89,7 @@ function LoginP() {
         </form>
 
         <div className="auth-footer">
-          <p>Don't have an account? <a href="/SignupP">Sign up here</a></p>
+          <p>Don't have an account? <a href="/signupP">Sign up here</a></p>
         </div>
       </div>
     </div>
