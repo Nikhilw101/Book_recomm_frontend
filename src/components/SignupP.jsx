@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import BackToHome from './BackToHome';
@@ -84,11 +84,12 @@ function SignupP() {
         name: formData.name
       });
       
-      // Store user_id in localStorage
       localStorage.setItem('user_id', response.data.user_id);
       
       toast.success('Registration successful! Please login to continue.');
-      navigate('/LoginP');
+      setTimeout(() => {
+        navigate('/LoginP');
+      }, 1000);
     } catch (error) {
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
@@ -187,7 +188,7 @@ function SignupP() {
         </form>
 
         <div className="auth-footer">
-          <p>Already have an account? <a href="/LoginP">Login here</a></p>
+          <p>Already have an account? <Link to="/LoginP" >Login here</Link></p>
         </div>
       </div>
     </div>
