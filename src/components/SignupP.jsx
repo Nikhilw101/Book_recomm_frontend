@@ -187,7 +187,7 @@ function SignupP() {
         </form>
 
         <div className="auth-footer">
-          <p>Already have an account? <a href="/loginP">Login here</a></p>
+          <p>Already have an account? <a href="/LoginP">Login here</a></p>
         </div>
       </div>
     </div>
