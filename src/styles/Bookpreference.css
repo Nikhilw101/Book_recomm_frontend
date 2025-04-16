@@ -138,6 +138,23 @@
   border: 1px solid var(--border-color);
 }
 
+.info-message {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: var(--text-primary);
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--accent-color);
+  font-size: 0.9rem;
+}
+
+.info-message p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .loading-overlay {
   position: absolute;
   top: 0;
