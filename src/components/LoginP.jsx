@@ -12,6 +12,7 @@ function LoginP() {
     password: ''
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,13 +20,18 @@ function LoginP() {
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
+    if (error) {
+      setError('');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await axios.post('https://book-recomm-backend-1.onrender.com/auth/login', formData);
+      setError('');
+      const response = await axios.post('http://localhost:5000/auth/login', formData);
       
       // Store user_id in localStorage
       localStorage.setItem('user_id', response.data.user_id);
@@ -33,6 +39,11 @@ function LoginP() {
       toast.success('Login successful!');
       navigate('/Userdash');
     } catch (error) {
+      if (error.response?.status === 401) {
+        setError('Invalid email or password');
+      } else {
+        setError('Login failed. Please try again.');
+      }
       toast.error(error.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
@@ -69,6 +80,7 @@ function LoginP() {
               required
               placeholder="Enter your password"
             />
+            {error && <div className="error-message">{error}</div>}
           </div>
 
           <button type="submit" className="auth-button" disabled={loading}>
